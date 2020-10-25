@@ -143,23 +143,23 @@
 }
 // ******************************** 函数柯里化 ***********************************
 {
-  const _ = require('lodash');
-  const match = _.curry(function (reg, str) {
-    return str.match(reg);
-  });
+  // const _ = require('lodash');
+  // const match = _.curry(function (reg, str) {
+  //   return str.match(reg);
+  // });
 
-  const haveSpace = match(/\s+/g);
-  const haveNumber = match(/\d+/g);
+  // const haveSpace = match(/\s+/g);
+  // const haveNumber = match(/\d+/g);
 
   // console.log(haveSpace('helloworld'));
   // console.log(haveNumber('123abc'));
 
-  const filter = _.curry(function (func, array) {
-    return array.filter(func);
-  });
+  // const filter = _.curry(function (func, array) {
+  //   return array.filter(func);
+  // });
 
-  const findSpace = filter(haveSpace);
-  const fildNumber = filter(haveNumber);
+  // const findSpace = filter(haveSpace);
+  // const fildNumber = filter(haveNumber);
   // console.log(findSpace(['zhang san', 'lisi']));
   // console.log(fildNumber(['12zhang san', '12lisi']));
 
@@ -177,4 +177,25 @@
       return func(...args);
     }
   }
+}
+// ******************************** 函数柯里化 ***********************************
+{
+  // 实现 compose
+  function compose(...args) {
+    return function (value) {
+      return args.reverse().reduce(function (acc, fn) {
+        return fn(acc);
+      }, value);
+    }
+  }
+
+  const compose2 = (...args) => value => args.reverse().reduce((acc, fn) => fn(acc), value);
+
+  const reverse = arr => arr.reverse();
+  const first = arr => arr[0];
+  const toUpper = s => s.toUpperCase();
+
+  const f = compose(toUpper, first, reverse);
+  console.log(f(['one', 'two', 'three']));
+
 }
