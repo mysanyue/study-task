@@ -7,7 +7,17 @@
  * 3. resolve 和 reject 函数是用来更改状态的
  *    resolve: fulfilled
  *    reject: rejected
+ * 4. then 方法内部做的事情就是判断状态，如果状态是成功，调用成功的回调函数，如果状态是失败，调用失败回调函数，then 方法是被定义在原型对象中的方法
+ * 4. then 成功回调有一个参数，表示成功之后的值，then失败回调有一个参数，表示失败后的原因
  */
-new Promise((resolve, reject) => {
+const MyPromise = require('./myPromise');
+let promise = new MyPromise((resolve, reject) => {
+  resolve('成功');
+  reject('失败');
+});
 
+promise.then(value => {
+  console.log(value);
+}, reason => {
+  console.log(reason);
 });
