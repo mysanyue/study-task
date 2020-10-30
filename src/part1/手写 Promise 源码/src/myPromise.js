@@ -47,6 +47,9 @@ class MyPromise {
   }
 
   then(successCallback, failCallback) {
+    successCallback = successCallback ? successCallback : value => value;
+    failCallback = failCallback ? failCallback : reason => { throw reason };
+
     let promise2 = new MyPromise((resolve, reject) => {
       // 状态判断
       if (this.status === FULFILLED) {
@@ -114,6 +117,50 @@ class MyPromise {
     });
 
     return promise2;
+  }
+
+  finally(callback) {
+    return this.then(value => {
+      return MyPromise.resolve(callback()).then(() => value);
+    }, reason => {
+      return MyPromise.resolve(callback()).then(() => { throw reason });
+    });
+  }
+
+  catch(failCallback) {
+    return this.then(undefined, failCallback);
+  }
+
+  static all(array) {
+    let result = [];
+    let index = 0;
+
+    return new MyPromise((resolve, reject) => {
+      function addData(key, value) {
+        result[key] = value;
+        index++;
+        if (index === array.length) {
+          resolve(result);
+        }
+      }
+
+      for (let i = 0; i < array.length; i++) {
+        let current = array[i];
+        if (current instanceof MyPromise) {
+          // promise 对象
+          current.then(value => addData(i, value), reason => reject(reason));
+        } else {
+          // 普通对象
+          addData(i, array[i]);
+        }
+      }
+
+    });
+  }
+
+  static resolve(value) {
+    if (value instanceof MyPromise) return value;
+    return new MyPromise(resolve => resolve(value));
   }
 }
 
