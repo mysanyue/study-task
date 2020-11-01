@@ -26,7 +26,7 @@ class Maybe {
   }
 
   map(fn) {
-    return this.isNothing ? this : Maybe.of(fn(this._value));
+    return this.isNothing() ? this : Maybe.of(fn(this._value));
   }
 }
 
