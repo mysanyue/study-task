@@ -170,6 +170,6 @@ const cars = [{
 }
 ```
 
-### 四、[手写 MyPromise 源码]((https://github.com/mysanyue/studyNotes/blob/main/part1/task-1/code/4.js))
+### 四、[手写 MyPromise 源码](https://github.com/mysanyue/studyNotes/blob/main/part1/task-1/code/4.js)
 
 > 要求：尽可能还原 Promise 中的每一个API，并通过注释的方式描述思路和原理
