@@ -9,7 +9,7 @@
 
 ## 编程题
 
-### 一. 将下面异步代码使用 Promise 的方式改进
+### 一. [将下面异步代码使用 Promise 的方式改进](https://github.com/mysanyue/studyNotes/blob/main/part1/task-1/code/1.js)
 
 ``` js
  setTimeout(function() {
@@ -24,7 +24,7 @@
  }, 10);
 ```
 
-### 二. 基于以下代码完成下面的四个联系
+### 二. [基于以下代码完成下面的四个联系](https://github.com/mysanyue/studyNotes/blob/main/part1/task-1/code/2.js)
 
 ``` js
 const fp = requie('lodash/fp');
@@ -105,7 +105,7 @@ const cars = [{
 }
 ```
 
-### 三、基于以下提供的代码，完成后续的四个练习
+### 三、[基于以下提供的代码，完成后续的四个练习](https://github.com/mysanyue/studyNotes/blob/main/part1/task-1/code/3.js)
 
 ``` js
 // 练习1：使用 fp.add(x,y) 和 fp.map(f,x) 创建一个能让 function 里的值增加的函数 ex1
@@ -170,6 +170,6 @@ const cars = [{
 }
 ```
 
-### 四、手写 MyPromise 源码
+### 四、[手写 MyPromise 源码]((https://github.com/mysanyue/studyNotes/blob/main/part1/task-1/code/4.js))
 
 > 要求：尽可能还原 Promise 中的每一个API，并通过注释的方式描述思路和原理
