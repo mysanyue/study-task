@@ -11,8 +11,8 @@ let vm = new Vue({
   },
   method: {
     clickHandler () {
-    // 该 name 属性是否是响应式的
-    this.dog.name = 'Trump'
+      // 该 name 属性是否是响应式的
+      this.dog.name = 'Trump'
     }
   }
 })
