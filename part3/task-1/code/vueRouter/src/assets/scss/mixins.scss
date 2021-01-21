@@ -1,0 +1,31 @@
+@charset "utf-8";
+@import "systemVar.scss";
+
+// 清除浮动
+@mixin clear-float {
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+// transition
+@mixin transition {
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+}
+
+// box-shadow
+@mixin box-shadow {
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+  box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+  background-color: #fff;
+}
+
+// text-nowrap
+@mixin no-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

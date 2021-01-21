@@ -1,0 +1,519 @@
+@charset "utf-8";
+@import "systemVar.scss";
+
+/********************************* 样式初始化 ***************************************/
+body {
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+  color: rgba(0, 0, 0, .65);
+  background-color: $bgColor;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body,
+ul,
+li,
+img {
+  margin: 0;
+  padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h4,
+h6 {
+  margin: 15px 0;
+}
+
+code,
+pre {
+  font-family: Consolas, 'Courier New', monospace;
+  -webkit-font-smoothing: initial;
+  -moz-osx-font-smoothing: initial;
+}
+
+code {
+  border-radius: 4px;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+figcaption {
+  margin: 10px 0;
+}
+
+/********************************* 公共样式 ***************************************/
+/* 浮动 */
+.float-l {
+  float: left;
+}
+
+.float-r {
+  float: right;
+}
+
+/* 清除浮动 */
+.clearfloat:before,
+.clearfloat:after {
+  display: table;
+  content: "";
+  line-height: 0px;
+}
+
+.clearfloat:after {
+  clear: both;
+}
+
+.clearfloat {
+  *zoom: 1;
+}
+
+/* 手势 */
+.gesture {
+  cursor: pointer;
+}
+
+/* 对齐方式*/
+.tx-l {
+  text-align: left;
+}
+
+.tx-r {
+  text-align: right;
+}
+
+.tx-c {
+  text-align: center;
+}
+
+.img-responsive {
+  max-width: 100%;
+}
+
+/* 边框类 */
+.uba {
+  border: 1px solid;
+}
+
+.ubt {
+  border-top: 1px solid;
+}
+
+.ubb {
+  border-bottom: 1px solid;
+}
+
+.ubl {
+  border-left: 1px solid;
+}
+
+.ubr {
+  border-right: 1px solid;
+}
+
+/* 颜色类 */
+.uba,
+.ubl,
+.ubt,
+.ubr,
+.ubb {
+  border-color: $bgColor;
+}
+
+.tx-white {
+  color: #fff;
+}
+
+.tx-error,
+.tx-important {
+  color: $importantColor;
+}
+
+.tx-warning {
+  color: $warningColor;
+}
+
+.tx-info {
+  color: $txColor;
+}
+
+.tx-theme {
+  color: $themeColor;
+}
+
+.tx-success {
+  color: $successColor;
+}
+
+.bg-body {
+  background: $bgColor;
+}
+
+.bg-theme {
+  background: $themeColor;
+}
+
+.bg-warning {
+  background: $warningColor;
+}
+
+.bg-important {
+  background: $importantColor;
+}
+
+.bg-success {
+  background: $successColor;
+}
+
+.tx-error,
+.tx-important,
+.tx-warning,
+.tx-info,
+.tx-success {
+  padding: 0 4px;
+}
+
+/* 字体类 */
+.text-weight {
+  font-weight: 700
+}
+
+.text-line-height {
+  line-height: 1.5
+}
+
+.text-indent {
+  text-indent: 24px;
+}
+
+.text-24 {
+  font-size: 24px;
+}
+
+.text-18 {
+  font-size: 18px;
+}
+
+.text-16 {
+  font-size: 16px;
+}
+
+.text-14 {
+  font-size: 14px;
+}
+
+.text-12 {
+  font-size: 12px;
+}
+
+/* 边距类 */
+.margin-auto {
+  margin: 0 auto;
+}
+
+.margin-t {
+  margin-top: $marginInterval;
+}
+
+.margin-r {
+  margin-right: $marginInterval
+}
+
+.margin-b {
+  margin-bottom: $marginInterval
+}
+
+.margin-l {
+  margin-left: $marginInterval
+}
+
+.padding {
+  padding: $marginInterval
+}
+
+.padding-t {
+  padding-top: $marginInterval
+}
+
+.padding-r {
+  padding-right: $marginInterval
+}
+
+.padding-b {
+  padding-bottom: $marginInterval
+}
+
+.padding-l {
+  padding-left: $marginInterval
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* 滚动条样式 */
+.scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+.scrollbar::-webkit-scrollbar-corner,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  min-height: 20px;
+  border-radius: 30px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8a8a8;
+}
+
+/********************************* flex布局样式***************************************/
+/* 开启弹性布局 */
+.flex {
+  display: flex !important;
+  position: relative;
+}
+
+/* 垂直排列 */
+.flex-rev {
+  flex-direction: column;
+}
+
+/* 溢出换行 */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* 水平右对齐 */
+.flex-x-right {
+  justify-content: flex-end
+}
+
+/* 水平居中 */
+.flex-x-center {
+  justify-content: center
+}
+
+/* 水平两端对齐 */
+.flex-x-between {
+  justify-content: space-between
+}
+
+/* 水平两侧间隔相等 */
+.flex-x-around {
+  justify-content: space-around
+}
+
+/* 垂直底部对齐 */
+.flex-y-bottom {
+  align-items: flex-end
+}
+
+/* 垂直居中对齐 */
+.flex-y-center {
+  align-items: center
+}
+
+/* 项分割占比*/
+.flex-1 {
+  flex-grow: 1
+}
+
+.flex-2 {
+  flex-grow: 2
+}
+
+.flex-3 {
+  flex-grow: 3
+}
+
+.flex-4 {
+  flex-grow: 4
+}
+
+/* 当前项不缩小*/
+.flex-item-nozip {
+  flex-shrink: 0
+}
+
+/********************************* elemnet ui 样式覆盖 ***************************************/
+.el-menu--vertical {
+  .el-menu-item {
+    height: 40px;
+    line-height: 40px;
+  }
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: #f4f4f4 !important;
+}
+
+.el-loading-mask {
+  z-index: 180 !important;
+}
+
+.el-table--small {
+  font-size: 14px !important;
+}
+
+/********************************* 公共样式 *******************************************/
+/* 溢出显示省略号 */
+.text-ss {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap !important;
+  outline: 0 !important
+}
+
+.common-container {
+  position: relative;
+  min-height: calc(100vh - 171px);
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  border-radius: 4px;
+  padding: 16px;
+  box-sizing: border-box;
+
+  .search-bar {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $borderColor;
+
+    &:after {
+      display: block;
+      content: '';
+      clear: both;
+    }
+
+    .search-input {
+      float: left;
+      margin-right: 10px;
+
+      >.el-select {
+        width: 150px;
+      }
+
+      >.el-input {
+        width: 220px;
+      }
+
+      .el-input-group__append {
+        padding: 0 14px;
+      }
+    }
+
+    .search-label {
+      float: left;
+      margin-right: 10px;
+
+      >.el-select {
+        width: 150px;
+      }
+
+      >.el-input {
+        width: 180px;
+      }
+
+      label {
+        margin-right: 6px;
+      }
+    }
+
+    .search-btn,
+    .export-btn {
+      float: right;
+    }
+  }
+}
+
+/******************************** css3 animete *****************************************/
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.5s;
+}
+
+.fade-transform-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-transform-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
+.fadeInRight {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: fadeInRight;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
