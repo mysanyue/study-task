@@ -73,7 +73,7 @@ class Compiler {
 
   // 处理 v-on 指令
   onUpdater(node, value, key) {
-    node.addEventListener(value, () => this.vm.$methods[key]())
+    node.addEventListener(value, () => this.vm[key]())
   }
   // 处理 v-html 指令
   htmlUpdater(node, value, key) {

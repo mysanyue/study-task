@@ -4,13 +4,21 @@ class Vue {
     this.$options = options || {}
     this.$data = options.data || {}
     this.$el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el
-    this.$methods = options.methods || {}
     // 2. 把 data 中的成员转换成 getter 和 setter，注入到 vue 实例中
     this._proxyData(this.$data)
     // 3. 调用 observer 对象，监听数据的变化
     new Observer(this.$data)
     // 4. 调用 compiler 对象，解析指令和差值表达式
     new Compiler(this)
+    // 5. 合并方法
+    this._mergeMethods(options.methods)
+  }
+
+  _mergeMethods(methods) {
+    // 遍历所有方法挂载到实例对象上
+    for (let key in methods) {
+      this[key] = methods[key]
+    }
   }
 
   _proxyData(data) {
