@@ -35,9 +35,14 @@ class Compiler {
   compileElement(node) {
     // 遍历所有属性节点
     Array.from(node.attributes).forEach(attr => {
-      // 判断是否是指令
       let attrName = attr.name
-      if (this.isDirective(attrName)) {
+      if (this.isDirectiveOn(attrName)) {
+        // 判断是否是事件指令
+        // v-on:
+        attrName = attrName.substr(5)
+        this.onUpdater(node, attrName, attr.value)
+      } else if (this.isDirective(attrName)) {
+        // 判断是否是指令
         // v-text --> text
         attrName = attrName.substr(2)
         this.update(node, attr.value, attrName)
@@ -66,6 +71,17 @@ class Compiler {
     node.addEventListener('input', () => this.vm[key] = node.value)
   }
 
+  // 处理 v-on 指令
+  onUpdater(node, value, key) {
+    node.addEventListener(value, () => this.vm.$methods[key]())
+  }
+  // 处理 v-html 指令
+  htmlUpdater(node, value, key) {
+    node.textContent = value
+    // 创建 watcher 对象，当数据改变更新视图
+    new Watcher(this.vm, key, newValue => node.textContent = newValue)
+  }
+
   // 编译文本节点，处理差值表达式
   compileText(node) {
     const reg = /\{\{(.+?)\}\}/
@@ -82,6 +98,11 @@ class Compiler {
   // 判断元素属性是否是指令
   isDirective(attrName) {
     return attrName.startsWith('v-')
+  }
+
+  // 判断元素是否是事件指令
+  isDirectiveOn(attrName) {
+    return attrName.startsWith('v-on:')
   }
 
   // 判断节点是否是文本节点

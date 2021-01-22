@@ -4,6 +4,7 @@ class Vue {
     this.$options = options || {}
     this.$data = options.data || {}
     this.$el = typeof options.el === 'string' ? document.querySelector(options.el) : options.el
+    this.$methods = options.methods || {}
     // 2. 把 data 中的成员转换成 getter 和 setter，注入到 vue 实例中
     this._proxyData(this.$data)
     // 3. 调用 observer 对象，监听数据的变化
