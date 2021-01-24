@@ -10,6 +10,15 @@ class Vue {
     new Observer(this.$data)
     // 4. 调用 compiler 对象，解析指令和差值表达式
     new Compiler(this)
+    // 5. 合并方法
+    this._mergeMethods(options.methods)
+  }
+
+  _mergeMethods(methods) {
+    // 遍历所有方法挂载到实例对象上
+    for (let key in methods) {
+      this[key] = methods[key]
+    }
   }
 
   _proxyData(data) {

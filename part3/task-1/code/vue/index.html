@@ -21,6 +21,10 @@
     <h1>v-model</h1>
     <input type="text" v-model="msg">
     <input type="text" v-model="count">
+    <h1>v-html</h1>
+    <code v-html="html"></code>
+    <h1>v-on</h1>
+    <button v-on:click="clickHander">v-on 点击</button>
   </div>
   <script src="./js/dep.js"></script>
   <script src="./js/watcher.js"></script>
@@ -33,7 +37,13 @@
       data: {
         msg: 'Hello Vue',
         count: 100,
-        person: { name: 'ace' }
+        person: { name: 'ace' },
+        html: '<p class="info">这个是p标签</p>'
+      },
+      methods: {
+        clickHander() {
+          console.log('点击事件走你')
+        }
       }
     })
   </script>
