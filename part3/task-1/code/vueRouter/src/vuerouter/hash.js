@@ -26,7 +26,7 @@ export default class VueRouter {
     this.options = options
     this.routeMap = {}
     this.data = _Vue.observable({
-      current: '/'
+      current: '#/'
     })
   }
 
@@ -40,7 +40,7 @@ export default class VueRouter {
   // 遍历所有的路由规则，把路由规则解析成键值对的形式 存储到 routerMap 中
   createRouteMap() {
     this.options.routes.forEach(route => {
-      this.routeMap[route.path] = route.component
+      this.routeMap['#' + route.path] = route.component
     })
   }
 
@@ -53,7 +53,7 @@ export default class VueRouter {
       render(h) {
         return h('a', {
           attrs: {
-            href: this.to
+            href: '#' + this.to
           },
           on: {
             click: this.clickHandler
@@ -62,8 +62,8 @@ export default class VueRouter {
       },
       methods: {
         clickHandler(e) {
-          history.pushState({}, '', this.to)
-          this.$router.data.current = this.to
+          history.pushState({}, '', '#' + this.to)
+          this.$router.data.current = '#' + this.to
           e.preventDefault()
         }
       }
@@ -72,15 +72,21 @@ export default class VueRouter {
     const self = this
     Vue.component('router-view', {
       render(h) {
-        const cm = self.routeMap[self.data.current]
+        // 返回对应的路由，如果找不到就返回首页
+        const cm = self.routeMap[self.data.current] || self.routeMap['#/default']
         return h(cm)
       }
     })
   }
 
   initEvent() {
+    // 判断当前url中是否有 #
+    if (!location.hash) {
+      location.hash = '#/'
+    }
+
     window.addEventListener('popstate', () => {
-      this.data.current = window.location.pathname
+      this.data.current = location.hash.substr(1)
     })
   }
 }

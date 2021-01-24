@@ -1,8 +1,8 @@
 <template>
   <div class="home">
+    <h1>这里是首页</h1>
     <img alt="Vue logo" src="../assets/logo.png">
-    <el-button @click="onClick">走你</el-button>
-
+    <el-button @click="onClick">打印console.log</el-button>
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
