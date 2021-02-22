@@ -79,4 +79,23 @@
 
 ### 3、请简述虚拟 DOM 中 Key 的作用和好处。
 
+- 当没有设置 `key` 的时候在 `updateChildren` 中比较子节点的时候，会做三次更新 `DOM` 操作和一次插入 `DOM` 的操作
+
+- 当设置 `key` 的时候在 `updateChildren` 中比较子节点的时候，因为 `oldVnode` 的子节点的 `b`,`c`,`d` 和 `newVnode` 的 `x`,`b`,`c` 的 `key` 相同，所以只做比较，没有更新 `DOM` 的操作，当遍历完毕后，会再把 `x` 插入到 `DOM` 上 `DOM` 操作只有一次插入操作。
+
 ### 4、请简述 Vue 中模板编译的过程。
+
+- `compileToFunctions(template, {}, this)`
+  - 返回 `{ render, staticRenderFns }`
+- `createCompiler(baseOptions)`
+  - 定义 `compile(template, options)` 函数
+  - 生成 `compileToFunctions` `createCompileToFunctionFn(compile)`
+  - 返回 `{ compile, compileToFunctions }`
+  - `compileToFunctions` 函数是模板编译的入口
+- `createCompilerCreator(function baseCompile() {})`
+  - 传入了 `baseCompile(temple, finalOptions)` 函数
+  - `baseCompile`
+    - 解析 `parse`
+    - 优化 `optimize`
+    - 生成 `generate`
+  - 返回 `createCompiler` 函数
