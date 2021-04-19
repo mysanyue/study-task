@@ -6,6 +6,7 @@
 
 module.exports = {
   siteName: 'Gridsome',
+  siteUrl: './',
   icon: './src/favicon.png',
   plugins: [{
     use: '@gridsome/source-filesystem',
